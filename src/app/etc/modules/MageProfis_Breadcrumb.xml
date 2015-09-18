@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <MageProfis_Breadcrumb>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Core />
+                <Mage_Catalog />
+            </depends>
+        </MageProfis_Breadcrumb>
+    </modules>
+</config> 

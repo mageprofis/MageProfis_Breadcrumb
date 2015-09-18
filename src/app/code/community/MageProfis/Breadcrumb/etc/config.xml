@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MageProfis_Breadcrumb>
+            <version>1.0.0.0</version>
+        </MageProfis_Breadcrumb>
+    </modules>
+    <global>
+        <models>
+            <mpbreadcrumb>
+                <class>MageProfis_Breadcrumb_Model</class>
+            </mpbreadcrumb>
+        </models>
+    </global>
+    <frontend>
+        <events>
+            <catalog_controller_product_init>
+                <observers>
+                    <mpbreadcrumb>
+                        <type>singleton</type>
+                        <class>mpbreadcrumb/observer</class>
+                        <method>onProductInitEvent</method>
+                    </mpbreadcrumb>
+                </observers>
+            </catalog_controller_product_init>
+        </events>
+    </frontend>
+</config>
