@@ -64,11 +64,14 @@ extends Mage_Core_Model_Abstract
     public function setCategory($product)
     {
         $collection = Mage::getModel('catalog/category')->getCollection()
+                ->addAttributeToSelect(array('parent_id'))
                 ->addAttributeToFilter('entity_id', array('in' => $product->getCategoryIds()))
                 ->addAttributeToFilter('path', array('like' => $this->getRootCategoryPath().'/%'))
                 ->addAttributeToFilter('is_active', 1)
-                ->addOrder('include_in_menu', Varien_Data_Collection_Db::SORT_ORDER_DESC)
                 ->addOrder('level', Varien_Data_Collection_Db::SORT_ORDER_DESC)
+                ->addOrder('include_in_menu', Varien_Data_Collection_Db::SORT_ORDER_DESC)
+                ->setPageSize(1)
+                ->setCurPage(1)
         ;
         if (!$product->getSkipEvent())
         {
@@ -77,11 +80,10 @@ extends Mage_Core_Model_Abstract
                 'collection' => $collection
             ));
         }
-        $categoryIds = $collection->getAllIds();
-        if (count($categoryIds))
+        $collection->load();
+        if ($collection->count() > 0)
         {
-            $id = array_shift($categoryIds);
-            unset($categoryIds);
+            $id = $collection->getFirstItem()->getId();
             if ($product->canBeShowInCategory($id)) {
                 $category = Mage::getModel('catalog/category')->load($id);
                 /* @var $category Mage_Catalog_Model_Category */
