@@ -1,0 +1,30 @@
+{
+  "name": "mageprofis/breadcrumb",
+  "license": "GPL-3.0",
+  "type": "magento-module",
+  "description": "Puts a category before the product name in the breadcrumb",
+  "homepage": "https://github.com/mageprofis/MageProfis_Breadcrumb",
+  "require": {
+    "php": ">=5.3"
+  },
+  "suggest": {
+    "magento-hackathon/magento-composer-installer": "*"
+  },
+  "authors": [
+    {
+      "name": "Mathis Klooß",
+      "email": "mathis@mage-profis.de",
+      "role": "Author/Maintainer"
+    },
+    {
+      "name": "Leon Weickert",
+      "email": "leon@mage-profis.de",
+      "role": "Author/Maintainer"
+    },
+    {
+      "name": "Remi Ebeling",
+      "email": "remi@mage-profis.de",
+      "role": "Author/Maintainer"
+    }
+  ]
+}
